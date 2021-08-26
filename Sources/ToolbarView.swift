@@ -156,33 +156,69 @@ public final class ToolbarView: UIView {
 extension ToolbarView {
     
     ///
+    /// Activates a tool.
+    /// - note: This method will obey the rule of *selectionMode*.
+    ///
+    /// - parameter toolIdentifier: The identifier of the tool to activate.
+    /// - returns: True if the tool was successfully activated. False if the tool could not be activated.
+    ///
+    @discardableResult
+    public func activateTool(withIdentifier toolIdentifier: String) -> Bool {
+        
+        guard let tool = tools.first(where: { $0.id == toolIdentifier }) else { return false }
+        let toolIsActive = activeToolIdentifiers.contains(tool.id)
+        
+        guard !toolIsActive else { return true }
+        
+        switch selectionMode {
+        // Always allows selection after deselecting active tool.
+        case .single: activeToolIdentifiers.removeAll()
+        // Allow selection only if no other tools are active
+        case .singleLock: if !activeToolIdentifiers.isEmpty { return false }
+        // Always allows activation
+        case .multiple: break
+        }
+        
+        activeToolIdentifiers.insert(tool.id)
+        update()
+        delegate?.toolbarView(self, didChangeStatusOf: tool, status: true)
+        
+        return true
+    }
+    
+    ///
+    /// Deactivates a tool.
+    ///
+    /// - parameter toolIdentifier: The identifier of the tool to deactivate.
+    /// - returns: True if the tool was successfully deactivated. False if the tool could not be deactivated.
+    ///
+    @discardableResult
+    public func deactivateTool(withIdentifier toolIdentifier: String) -> Bool {
+        
+        guard let tool = tools.first(where: { $0.id == toolIdentifier }) else { return false }
+        let toolIsActive = activeToolIdentifiers.contains(tool.id)
+        
+        guard toolIsActive else { return true }
+        
+        activeToolIdentifiers.remove(toolIdentifier)
+        update()
+        delegate?.toolbarView(self, didChangeStatusOf: tool, status: false)
+        return true
+    }
+    
+    ///
     /// Called when a tool button is pressed.
     ///
     @objc private func toolSelected(_ sender: UIButton) {
         
-        // Prevents activation of an additional tool when in single select mode.
-        let selectedTool = tools[sender.tag]
-        let toolIsActive = activeToolIdentifiers.contains(selectedTool.id)
+        let tool = tools[sender.tag]
+        let toolIsActive = activeToolIdentifiers.contains(tool.id)
         
         if toolIsActive {
-            activeToolIdentifiers.remove(selectedTool.id)
+            deactivateTool(withIdentifier: tool.id)
         } else {
-            switch selectionMode {
-            // Always allows selection after deselecting active tool.
-            case .single:
-                activeToolIdentifiers.removeAll()
-                update()
-            // Allow selection only if no other tools are active
-            case .singleLock: if !activeToolIdentifiers.isEmpty { return }
-            // Always allows activation
-            case .multiple: break
-            }
-            activeToolIdentifiers.insert(selectedTool.id)
+            activateTool(withIdentifier: tool.id)
         }
-        
-        sender.isSelected.toggle()
-        update()
-        delegate?.toolbarView(self, didChangeStatusOf: tools[sender.tag], status: sender.isSelected)
     }
 }
 
