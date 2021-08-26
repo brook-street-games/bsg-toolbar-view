@@ -32,19 +32,19 @@ public final class ToolbarView: UIView {
     
     /// Controls the layout of tools within the toolbar.
     public var layoutMode: LayoutMode = .block { didSet { createToolButtons() }}
+    /// Controls how many tools the user can activate at the same time.
+    public var selectionMode: SelectionMode = .single { didSet { createToolButtons() }}
     
     // MARK: - Styling -
     
     /// The tint color of the tool image when inactive.
-    public var toolColor: UIColor = .black { didSet { update() }}
+    public var toolColor: UIColor = .label { didSet { update() }}
     /// The tint color of the tool image when active.
-    public var activeToolColor: UIColor = .white { didSet { update() }}
+    public var activeToolColor: UIColor = .green { didSet { update() }}
     /// The background color of the tool when inactive.
     public var toolBackgroundColor: UIColor = .clear { didSet { update() }}
     /// The background color of the tool when active.
     public var activeToolBackgroundColor: UIColor = .clear { didSet { update() }}
-    /// Controls how many tools the user can activate at the same time.
-    public var selectionMode: SelectionMode = .single { didSet { createToolButtons() }}
     
     // MARK: - Private Properties -
     
