@@ -23,7 +23,7 @@ public final class ToolbarView: UIView {
     
     /// All tools that are displayed.
     public var tools: [Tool] = [] { didSet { createToolButtons() }}
-    /// The tool that are currently active.
+    /// All tools that are currently active.
     public var activeTools: [Tool] { return tools.filter { activeToolIdentifiers.contains($0.id) }}
     /// The object that handles events triggered by the toolbar.
     public weak var delegate: ToolbarViewDelegate?
@@ -35,15 +35,15 @@ public final class ToolbarView: UIView {
     
     // MARK: - Styling -
     
-    /// The tint color of the tool image when unselected.
+    /// The tint color of the tool image when inactive.
     public var toolColor: UIColor = .black { didSet { update() }}
-    /// The tint color of the tool image when selected.
+    /// The tint color of the tool image when active.
     public var activeToolColor: UIColor = .white { didSet { update() }}
-    /// The background color of the tool when unselected.
+    /// The background color of the tool when inactive.
     public var toolBackgroundColor: UIColor = .clear { didSet { update() }}
-    /// The background color of the tool when selected.
+    /// The background color of the tool when active.
     public var activeToolBackgroundColor: UIColor = .clear { didSet { update() }}
-    /// Controls how many tools the user can select.
+    /// Controls how many tools the user can activate at the same time.
     public var selectionMode: SelectionMode = .single { didSet { createToolButtons() }}
     
     // MARK: - Private Properties -
@@ -135,14 +135,18 @@ public final class ToolbarView: UIView {
     }
     
     ///
-    /// Update button colors to reflect user selection.
+    /// Update button colors to reflect active tools.
     ///
     private func update() {
         
         for view in buttonStackView.subviews {
+            
             guard let button = view as? UIButton else { continue }
-            button.tintColor = button.isSelected ? activeToolColor : toolColor
-            button.backgroundColor = button.isSelected ? activeToolBackgroundColor : toolBackgroundColor
+            let isActive = activeToolIdentifiers.contains(tools[button.tag].id)
+            
+            button.isSelected = isActive
+            button.tintColor = isActive ? activeToolColor : toolColor
+            button.backgroundColor = isActive ? activeToolBackgroundColor : toolBackgroundColor
         }
     }
 }
@@ -156,14 +160,23 @@ extension ToolbarView {
     ///
     @objc private func toolSelected(_ sender: UIButton) {
         
-        // Prevents selection of an additional tool when in single select mode.
+        // Prevents activation of an additional tool when in single select mode.
         let selectedTool = tools[sender.tag]
         let toolIsActive = activeToolIdentifiers.contains(selectedTool.id)
         
         if toolIsActive {
             activeToolIdentifiers.remove(selectedTool.id)
         } else {
-            if selectionMode == .single && activeTools.count > 0 { return }
+            switch selectionMode {
+            // Always allows selection after deselecting active tool.
+            case .single:
+                activeToolIdentifiers.removeAll()
+                update()
+            // Allow selection only if no other tools are active
+            case .singleLock: if !activeToolIdentifiers.isEmpty { return }
+            // Always allows activation
+            case .multiple: break
+            }
             activeToolIdentifiers.insert(selectedTool.id)
         }
         
@@ -185,9 +198,11 @@ public extension ToolbarView {
     }
     
     enum SelectionMode {
-        /// Only one tool can be selected at a time.
+        /// Only one tool can be active at a time.
         case single
-        /// Multiple tools can be selected at once.
+        /// Only one tool can be active at a time. The tool must be deactivated before another can be activated.
+        case singleLock
+        /// Multiple tools can be active at once.
         case multiple
     }
 }

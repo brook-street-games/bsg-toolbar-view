@@ -8,14 +8,19 @@
 import UIKit
 import BSGToolbarView
 
+///
+/// Sample area to explore *BSGToolbarView* configuration options.
+///
 final class SampleViewController: UIViewController {
     
     // MARK: - Properties -
     
+    /// The toolbar
     private var toolbarView: ToolbarView!
     
     // MARK: - UI -
     
+    /// The area that hosts *toolbarView*
     @IBOutlet private weak var canvasView: UIView!
     
     // MARK: - Setup -
@@ -26,13 +31,17 @@ final class SampleViewController: UIViewController {
         createToolbar()
     }
 
+    ///
+    /// Creates the toolbar.
+    ///
     private func createToolbar() {
         
         let tools = ["doc", "folder", "highlighter", "trash"].map { Tool(id: $0, image: UIImage(systemName: $0)) }
         toolbarView = ToolbarView(tools: tools)
-        toolbarView.frame = CGRect(x: 0, y: (canvasView.bounds.height / 2) - 20, width: 320, height: 40)
-        toolbarView.activeToolColor = .green
+        toolbarView.frame = CGRect(x: 0, y: (canvasView.bounds.height / 2) - 20, width: view.bounds.width - 40, height: 40)
         toolbarView.toolColor = .gray
+        toolbarView.activeToolColor = .green
+        toolbarView.selectionMode = .single
         canvasView.addSubview(toolbarView)
     }
 }
@@ -54,7 +63,8 @@ extension SampleViewController {
         
         switch sender.selectedSegmentIndex {
         case 0: toolbarView.selectionMode = .single
-        case 1: toolbarView.selectionMode = .multiple
+        case 1: toolbarView.selectionMode = .singleLock
+        case 2: toolbarView.selectionMode = .multiple
         default: break
         }
     }

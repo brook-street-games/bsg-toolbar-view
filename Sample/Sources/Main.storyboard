@@ -17,32 +17,32 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="KFU-LL-NEx">
-                                <rect key="frame" x="20.5" y="332" width="373" height="232"/>
+                                <rect key="frame" x="20" y="332" width="544" height="232"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OSf-8n-8S6" userLabel="canvasView">
-                                        <rect key="frame" x="0.0" y="0.0" width="373" height="100"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="544" height="100"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="100" id="CR4-or-GJf"/>
                                         </constraints>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Zg2-VN-pLD">
-                                        <rect key="frame" x="0.0" y="150" width="373" height="82"/>
+                                        <rect key="frame" x="0.0" y="150" width="544" height="82"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" id="h3J-6y-qec">
-                                                <rect key="frame" x="0.0" y="0.0" width="373" height="31"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="20" id="h3J-6y-qec">
+                                                <rect key="frame" x="0.0" y="0.0" width="544" height="31"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Layout Mode" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KNA-YZ-hMA">
-                                                        <rect key="frame" x="0.0" y="0.0" width="186.5" height="31"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="99" height="31"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Ykd-K0-4Tx">
-                                                        <rect key="frame" x="186.5" y="0.0" width="186.5" height="32"/>
+                                                        <rect key="frame" x="119" y="0.0" width="425" height="32"/>
                                                         <segments>
-                                                            <segment title="Block"/>
-                                                            <segment title="Fill"/>
+                                                            <segment title="block"/>
+                                                            <segment title="fill"/>
                                                         </segments>
                                                         <connections>
                                                             <action selector="layoutModeChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="3nH-29-7CC"/>
@@ -51,19 +51,20 @@
                                                 </subviews>
                                                 <viewLayoutGuide key="safeArea" id="7ah-2E-3U0"/>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="v1m-dB-Ac6">
-                                                <rect key="frame" x="0.0" y="51" width="373" height="31"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="v1m-dB-Ac6">
+                                                <rect key="frame" x="0.0" y="51" width="544" height="31"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Selection Mode" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nph-0A-9QY">
-                                                        <rect key="frame" x="0.0" y="0.0" width="186.5" height="31"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="118.5" height="31"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="nyg-Sc-X21">
-                                                        <rect key="frame" x="186.5" y="0.0" width="186.5" height="32"/>
+                                                        <rect key="frame" x="128.5" y="0.0" width="415.5" height="32"/>
                                                         <segments>
-                                                            <segment title="Single"/>
-                                                            <segment title="Multiple"/>
+                                                            <segment title="single"/>
+                                                            <segment title="singleLock"/>
+                                                            <segment title="multiple"/>
                                                         </segments>
                                                         <connections>
                                                             <action selector="selectionModeChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="Nc9-lU-agY"/>
@@ -74,16 +75,15 @@
                                         </subviews>
                                     </stackView>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="320" id="iRD-xV-VCK"/>
-                                </constraints>
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="KFU-LL-NEx" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="ALE-KK-Qk8"/>
+                            <constraint firstAttribute="trailing" secondItem="KFU-LL-NEx" secondAttribute="trailing" constant="20" id="ePy-Ta-ynW"/>
                             <constraint firstItem="KFU-LL-NEx" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="k1j-vH-jIF"/>
+                            <constraint firstItem="KFU-LL-NEx" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="yqU-dv-B6R"/>
                         </constraints>
                     </view>
                     <connections>
