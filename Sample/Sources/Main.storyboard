@@ -16,63 +16,69 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="KFU-LL-NEx">
-                                <rect key="frame" x="20" y="332" width="544" height="232"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="4cD-Mt-0WO">
+                                <rect key="frame" x="20" y="253" width="374" height="390"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OSf-8n-8S6" userLabel="canvasView">
-                                        <rect key="frame" x="0.0" y="0.0" width="544" height="100"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eUJ-gG-JKV" userLabel="canvasView">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="240"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="100" id="CR4-or-GJf"/>
+                                            <constraint firstAttribute="height" constant="240" id="nEH-GN-zie"/>
                                         </constraints>
                                     </view>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Zg2-VN-pLD">
-                                        <rect key="frame" x="0.0" y="150" width="544" height="82"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="9tt-yd-qXj">
+                                        <rect key="frame" x="0.0" y="290" width="374" height="100"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="20" id="h3J-6y-qec">
-                                                <rect key="frame" x="0.0" y="0.0" width="544" height="31"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="9Rf-Se-lNJ">
+                                                <rect key="frame" x="0.0" y="0.0" width="374" height="40"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Layout Mode" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KNA-YZ-hMA">
-                                                        <rect key="frame" x="0.0" y="0.0" width="99" height="31"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LayoutMode" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pqe-eH-IFn">
+                                                        <rect key="frame" x="0.0" y="0.0" width="94.5" height="40"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Ykd-K0-4Tx">
-                                                        <rect key="frame" x="119" y="0.0" width="425" height="32"/>
+                                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="sm9-9D-78V">
+                                                        <rect key="frame" x="104.5" y="0.0" width="269.5" height="41"/>
                                                         <segments>
                                                             <segment title="block"/>
                                                             <segment title="fill"/>
                                                         </segments>
                                                         <connections>
-                                                            <action selector="layoutModeChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="3nH-29-7CC"/>
+                                                            <action selector="layoutModeChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="9iI-Sm-6ln"/>
                                                         </connections>
                                                     </segmentedControl>
                                                 </subviews>
-                                                <viewLayoutGuide key="safeArea" id="7ah-2E-3U0"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="k4G-Tv-hEb"/>
+                                                </constraints>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="v1m-dB-Ac6">
-                                                <rect key="frame" x="0.0" y="51" width="544" height="31"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Afg-FD-2Bj">
+                                                <rect key="frame" x="0.0" y="60" width="374" height="40"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Selection Mode" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nph-0A-9QY">
-                                                        <rect key="frame" x="0.0" y="0.0" width="118.5" height="31"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SelectionMode" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KBX-qD-MUe">
+                                                        <rect key="frame" x="0.0" y="0.0" width="114.5" height="40"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="nyg-Sc-X21">
-                                                        <rect key="frame" x="128.5" y="0.0" width="415.5" height="32"/>
+                                                    <segmentedControl opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="7Kf-Z6-2EV">
+                                                        <rect key="frame" x="124.5" y="0.0" width="249.5" height="41"/>
                                                         <segments>
                                                             <segment title="single"/>
                                                             <segment title="singleLock"/>
                                                             <segment title="multiple"/>
                                                         </segments>
                                                         <connections>
-                                                            <action selector="selectionModeChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="Nc9-lU-agY"/>
+                                                            <action selector="selectionModeChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="slV-kH-KFt"/>
                                                         </connections>
                                                     </segmentedControl>
                                                 </subviews>
                                             </stackView>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstItem="Afg-FD-2Bj" firstAttribute="height" secondItem="9Rf-Se-lNJ" secondAttribute="height" id="gym-MC-H5S"/>
+                                        </constraints>
                                     </stackView>
                                 </subviews>
                             </stackView>
@@ -80,14 +86,13 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="KFU-LL-NEx" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="ALE-KK-Qk8"/>
-                            <constraint firstAttribute="trailing" secondItem="KFU-LL-NEx" secondAttribute="trailing" constant="20" id="ePy-Ta-ynW"/>
-                            <constraint firstItem="KFU-LL-NEx" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="k1j-vH-jIF"/>
-                            <constraint firstItem="KFU-LL-NEx" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="yqU-dv-B6R"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="4cD-Mt-0WO" secondAttribute="trailing" constant="20" id="Vp6-Dk-BHc"/>
+                            <constraint firstItem="4cD-Mt-0WO" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="iPA-kR-dRM"/>
+                            <constraint firstItem="4cD-Mt-0WO" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="v8U-he-Baf"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="canvasView" destination="OSf-8n-8S6" id="6fJ-IZ-dbv"/>
+                        <outlet property="canvasView" destination="eUJ-gG-JKV" id="MhY-ug-7dS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

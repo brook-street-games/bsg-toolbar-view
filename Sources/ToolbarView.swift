@@ -50,6 +50,11 @@ public final class ToolbarView: UIView {
     
     private var activeToolIdentifiers = Set<String>()
     
+    // MARK: - Override Properties -
+    
+    /// Forces recreation of tool buttons when changing.
+    public override var frame: CGRect { didSet { createToolButtons() }}
+    
     // MARK: - UI -
     
     private lazy var buttonStackView: UIStackView = {
@@ -74,7 +79,9 @@ public final class ToolbarView: UIView {
     }
     
     public override init(frame: CGRect) {
+        
         super.init(frame: frame)
+        layout()
     }
     
     required init?(coder: NSCoder) {
@@ -118,7 +125,11 @@ public final class ToolbarView: UIView {
         
         let button = UIButton()
         button.tag = index
-        button.setImage(tool.image, for: .normal)
+        button.setImage(tool.image?.withRenderingMode(.alwaysTemplate), for: .normal)
+        button.imageView?.contentMode = .scaleAspectFit
+        // Sizes the image to match the height of system images (24). This seems to jive nicely
+        let insetAmount: CGFloat = (bounds.height / 2) - 12
+        button.contentEdgeInsets = UIEdgeInsets(top: insetAmount, left: insetAmount, bottom: insetAmount, right: insetAmount)
         button.tintColor = toolColor
         button.backgroundColor = toolBackgroundColor
         button.addTarget(self, action: #selector(toolSelected(_:)), for: .touchUpInside)

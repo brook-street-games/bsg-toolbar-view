@@ -38,10 +38,9 @@ final class SampleViewController: UIViewController {
         
         let tools = ["doc", "folder", "highlighter", "trash"].map { Tool(id: $0, image: UIImage(systemName: $0)) }
         toolbarView = ToolbarView(tools: tools)
-        toolbarView.frame = CGRect(x: 0, y: (canvasView.bounds.height / 2) - 20, width: view.bounds.width - 40, height: 40)
+        toolbarView.frame = CGRect(x: 0, y: canvasView.bounds.height / 4, width: canvasView.bounds.width, height: canvasView.bounds.height / 2)
         toolbarView.toolColor = .gray
-        toolbarView.activeToolColor = .green
-        toolbarView.selectionMode = .single
+        toolbarView.backgroundColor = UIColor(white: 0.2, alpha: 0.5)
         canvasView.addSubview(toolbarView)
     }
 }
