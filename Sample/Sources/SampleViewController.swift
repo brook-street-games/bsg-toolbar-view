@@ -17,6 +17,10 @@ final class SampleViewController: UIViewController {
     
     /// The toolbar
     private var toolbarView: ToolbarView!
+    /// The frame of *toolbarView* in the horizontal position.
+    private var horizontalFrame: CGRect { return CGRect(x: 0, y: 0, width: canvasView.bounds.width, height: 50) }
+    /// The frame of *toolbarView* in the vertical position.
+    private var verticalFrame: CGRect { return CGRect(x: 0, y: 0, width: 50, height: canvasView.bounds.height) }
     
     // MARK: - UI -
     
@@ -25,20 +29,20 @@ final class SampleViewController: UIViewController {
     
     // MARK: - Setup -
     
-    override func viewDidLoad() {
+    override func viewDidAppear(_ animated: Bool) {
         
-        super.viewDidLoad()
+        super.viewDidAppear(animated)
         createToolbar()
     }
 
     ///
-    /// Creates the toolbar.
+    /// Creates the horizontal toolbar.
     ///
     private func createToolbar() {
         
         let tools = ["doc", "folder", "highlighter", "trash"].map { Tool(id: $0, image: UIImage(systemName: $0)) }
         toolbarView = ToolbarView(tools: tools)
-        toolbarView.frame = CGRect(x: 0, y: canvasView.bounds.height / 4, width: canvasView.bounds.width, height: canvasView.bounds.height / 2)
+        toolbarView.frame = horizontalFrame
         toolbarView.toolColor = .gray
         toolbarView.backgroundColor = UIColor(white: 0.2, alpha: 0.5)
         canvasView.addSubview(toolbarView)
@@ -64,6 +68,20 @@ extension SampleViewController {
         case 0: toolbarView.selectionMode = .single
         case 1: toolbarView.selectionMode = .singleLock
         case 2: toolbarView.selectionMode = .multiple
+        default: break
+        }
+    }
+    
+    @IBAction private func axisChanged(_ sender: UISegmentedControl) {
+        
+        switch sender.selectedSegmentIndex {
+        case 0:
+            toolbarView.axis = .horizontal
+            toolbarView.frame = horizontalFrame
+        case 1:
+            toolbarView.axis = .vertical
+            toolbarView.frame = verticalFrame
+            
         default: break
         }
     }

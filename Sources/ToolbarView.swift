@@ -22,7 +22,7 @@ public final class ToolbarView: UIView {
     // MARK: - Properties -
     
     /// All tools that are displayed.
-    public var tools: [Tool] = [] { didSet { createToolButtons() }}
+    public var tools: [Tool] = [] { didSet { setup() }}
     /// All tools that are currently active.
     public var activeTools: [Tool] { return tools.filter { activeToolIdentifiers.contains($0.id) }}
     /// The object that handles events triggered by the toolbar.
@@ -30,10 +30,12 @@ public final class ToolbarView: UIView {
     
     // MARK: - Behavior -
     
+    /// Controls the layout axis. The frame must be adjusted accordingly when changing this property.
+    public var axis: NSLayoutConstraint.Axis = .horizontal { didSet { setup() }}
     /// Controls the layout of tools within the toolbar.
-    public var layoutMode: LayoutMode = .block { didSet { createToolButtons() }}
+    public var layoutMode: LayoutMode = .block { didSet { setup() }}
     /// Controls how many tools the user can activate at the same time.
-    public var selectionMode: SelectionMode = .single { didSet { createToolButtons() }}
+    public var selectionMode: SelectionMode = .single { didSet { setup() }}
     
     // MARK: - Styling -
     
@@ -53,14 +55,13 @@ public final class ToolbarView: UIView {
     // MARK: - Override Properties -
     
     /// Forces recreation of tool buttons when changing.
-    public override var frame: CGRect { didSet { createToolButtons() }}
+    public override var frame: CGRect { didSet { setup() }}
     
     // MARK: - UI -
     
     private lazy var buttonStackView: UIStackView = {
         
         let stackView = UIStackView()
-        stackView.axis = .horizontal
         stackView.distribution = .fillEqually
         stackView.alignment = .fill
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -73,30 +74,38 @@ public final class ToolbarView: UIView {
     
     public init(tools: [Tool]) {
         
+        // Triggers setup
         self.tools = tools
         super.init(frame: CGRect.zero)
-        layout()
     }
     
     public override init(frame: CGRect) {
         
         super.init(frame: frame)
-        layout()
+        setup()
     }
     
     required init?(coder: NSCoder) {
         
         super.init(coder: coder)
-        layout()
+        setup()
     }
     
     // MARK: - Setup -
     
-    private func layout() {
+    private func setup() {
     
+        buttonStackView.axis = axis
+        NSLayoutConstraint.deactivate(constraints)
+        
         addConstraint(NSLayoutConstraint(item: buttonStackView, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1.0, constant: 0))
-        addConstraint(NSLayoutConstraint(item: buttonStackView, attribute: .left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1.0, constant: 0))
-        addConstraint(NSLayoutConstraint(item: buttonStackView, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1.0, constant: 0))
+        addConstraint(NSLayoutConstraint(item: buttonStackView, attribute: .leading, relatedBy: .equal, toItem: self, attribute: .leading, multiplier: 1.0, constant: 0))
+            
+        switch axis {
+        case .horizontal: addConstraint(NSLayoutConstraint(item: buttonStackView, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1.0, constant: 0))
+        case .vertical: addConstraint(NSLayoutConstraint(item: buttonStackView, attribute: .trailing, relatedBy: .equal, toItem: self, attribute: .trailing, multiplier: 1.0, constant: 0))
+        @unknown default: fatalError()
+        }
         
         createToolButtons()
     }
@@ -128,18 +137,26 @@ public final class ToolbarView: UIView {
         button.setImage(tool.image?.withRenderingMode(.alwaysTemplate), for: .normal)
         button.imageView?.contentMode = .scaleAspectFit
         // Sizes the image to match the height of system images (24). This seems to jive nicely
-        let insetAmount: CGFloat = (bounds.height / 2) - 12
+        let insetAmount: CGFloat = 0//(bounds.height / 2) - 12
         button.contentEdgeInsets = UIEdgeInsets(top: insetAmount, left: insetAmount, bottom: insetAmount, right: insetAmount)
         button.tintColor = toolColor
         button.backgroundColor = toolBackgroundColor
         button.addTarget(self, action: #selector(toolSelected(_:)), for: .touchUpInside)
         
-        switch layoutMode {
-        case .block:
-            button.addConstraint(NSLayoutConstraint(item: button, attribute: .width, relatedBy: .equal, toItem: button, attribute: .height, multiplier: 1.0, constant: 0))
-        case .fill:
+        switch (layoutMode, axis) {
+        
+        case (.block, _):
+            button.addConstraint(NSLayoutConstraint(item: button, attribute: .height, relatedBy: .equal, toItem: button, attribute: .width, multiplier: 1.0, constant: 0.0))
+            
+        case (.fill, .horizontal):
             let buttonWidth = frame.width / CGFloat(tools.count)
             button.addConstraint(NSLayoutConstraint(item: button, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: buttonWidth))
+            
+        case (.fill, .vertical):
+            let buttonHeight = frame.height / CGFloat(tools.count)
+            button.addConstraint(NSLayoutConstraint(item: button, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: buttonHeight))
+            
+        @unknown default: fatalError()
         }
         
         return button
