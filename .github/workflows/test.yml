@@ -17,4 +17,6 @@ jobs:
     - name: Install xcbeautify
       run: brew install xcbeautify
     - name: Run tests
-      run: xcodebuild -scheme BSGToolbarView test | xcbeautify
+      run: |
+      xcodebuild -list
+      xcodebuild -workspace BSGToolbarView.xcworkspace -scheme BSGToolbarView test | xcbeautify
