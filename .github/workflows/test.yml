@@ -1,4 +1,4 @@
-name: Swift
+name: Test
 
 on:
   push:
@@ -8,8 +8,8 @@ on:
 
 jobs:
   test:
-
-    runs-on: macos-latest
+    name: Run Tests
+    runs-on: macos-11
 
     steps:
     - name: Checkout
