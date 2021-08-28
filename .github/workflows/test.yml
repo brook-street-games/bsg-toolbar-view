@@ -7,11 +7,12 @@ on:
     branches: [ main ]
 
 jobs:
-  build:
+  test:
 
     runs-on: macos-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - name: Install xcbeautify
+      run: brew install xcbeautify
     - name: Run tests
       run: xcodebuild -workspace BSGToolbarView.xcworkspace -scheme BSGToolbarView test | xcbeautify
