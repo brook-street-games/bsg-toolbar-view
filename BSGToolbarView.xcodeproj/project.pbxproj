@@ -28,7 +28,7 @@
 		7A5459E526D1C12F009578CC /* Tool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tool.swift; sourceTree = "<group>"; };
 		7A5459E626D1C12F009578CC /* ToolbarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolbarView.swift; sourceTree = "<group>"; };
 		7A7F09B526D1C899006206A3 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7A7F09BB26D1C919006206A3 /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A7F09BB26D1C919006206A3 /* BSGToolbarViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BSGToolbarViewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A7F09BD26D1C919006206A3 /* ToolbarViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarViewTests.swift; sourceTree = "<group>"; };
 		7A7F09BF26D1C919006206A3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -65,7 +65,7 @@
 			isa = PBXGroup;
 			children = (
 				7A5459C926D1C0F4009578CC /* BSGToolbarView.framework */,
-				7A7F09BB26D1C919006206A3 /* Tests.xctest */,
+				7A7F09BB26D1C919006206A3 /* BSGToolbarViewTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -120,9 +120,9 @@
 			productReference = 7A5459C926D1C0F4009578CC /* BSGToolbarView.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		7A7F09BA26D1C919006206A3 /* Tests */ = {
+		7A7F09BA26D1C919006206A3 /* BSGToolbarViewTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7A7F09C326D1C919006206A3 /* Build configuration list for PBXNativeTarget "Tests" */;
+			buildConfigurationList = 7A7F09C326D1C919006206A3 /* Build configuration list for PBXNativeTarget "BSGToolbarViewTests" */;
 			buildPhases = (
 				7A7F09B726D1C919006206A3 /* Sources */,
 				7A7F09B826D1C919006206A3 /* Frameworks */,
@@ -133,9 +133,9 @@
 			dependencies = (
 				7A7F09C226D1C919006206A3 /* PBXTargetDependency */,
 			);
-			name = Tests;
+			name = BSGToolbarViewTests;
 			productName = Tests;
-			productReference = 7A7F09BB26D1C919006206A3 /* Tests.xctest */;
+			productReference = 7A7F09BB26D1C919006206A3 /* BSGToolbarViewTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -170,7 +170,7 @@
 			projectRoot = "";
 			targets = (
 				7A5459C826D1C0F4009578CC /* BSGToolbarView */,
-				7A7F09BA26D1C919006206A3 /* Tests */,
+				7A7F09BA26D1C919006206A3 /* BSGToolbarViewTests */,
 			);
 		};
 /* End PBXProject section */
@@ -273,7 +273,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -331,7 +331,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -451,7 +451,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7A7F09C326D1C919006206A3 /* Build configuration list for PBXNativeTarget "Tests" */ = {
+		7A7F09C326D1C919006206A3 /* Build configuration list for PBXNativeTarget "BSGToolbarViewTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7A7F09C426D1C919006206A3 /* Debug */,
