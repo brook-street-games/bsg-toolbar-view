@@ -18,5 +18,5 @@ jobs:
       run: brew install xcbeautify
     - name: Run tests
       run: |
-        xcodebuild -scheme BSGToolbarView -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 12,OS=14.5' test | xcbeautify
-        [[ $? = 0 ]] && exit 0 || exit 1
+        xcodebuild -scheme BSGToolbarView -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 12,OS=14.5' test | xcbeautify >> test-result.txt
+        grep -q 'Tests Failed' test-result.txt && exit 1
