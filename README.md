@@ -38,7 +38,7 @@ toolbarView.frame = CGRect(x: 0, y: 0, width: canvasView.bounds.width, height: 5
 view.addSubview(toolbarView)
 ```
 
-![BSGToolbarView](../Example/example.png)
+![BSGToolbarView](../main/Example/example.png)
 
 ## Sample Project
 
