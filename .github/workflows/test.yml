@@ -19,4 +19,4 @@ jobs:
     - name: Run tests
       run: |
         xcodebuild -scheme BSGToolbarView -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 12,OS=14.5' test | xcbeautify
-        if [[ $? = 0 ]] then exit 1
+        [[ $? = 0 ]] && exit 0 || exit 1
