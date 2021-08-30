@@ -200,7 +200,7 @@ extension ToolbarView {
         
         switch selectionMode {
         // Always allows selection after deselecting active tool.
-        case .single: break//activeToolIdentifiers.removeAll()
+        case .single: activeToolIdentifiers.removeAll()
         // Allow selection only if no other tools are active
         case .singleLock: if !activeToolIdentifiers.isEmpty { return false }
         // Always allows activation
