@@ -7,14 +7,15 @@ on:
     branches: [ main ]
 
 jobs:
-  test:
+  build:
     name: Run Tests
-    runs-on: macos-11
+    runs-on: macos-latest
 
     steps:
-    - name: Checkout
-      uses: actions/checkout@v2
-    - name: Install xcbeautify
-      run: brew install xcbeautify
-    - name: Run tests
-      run: xcodebuild -workspace BSGToolbarView.xcworkspace -scheme BSGToolbarView -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 12,OS=14.5' test | xcbeautify
+    - uses: actions/checkout@v2
+    - name: Ruby Setup
+      run: |
+        gem install bundler
+        bundle install
+    - name: Fastlane Scan
+      run: bundle exec fastlane test
