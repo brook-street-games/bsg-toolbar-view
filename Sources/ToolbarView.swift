@@ -8,8 +8,16 @@ import UIKit
 // MARK: - Delegate -
 
 public protocol ToolbarViewDelegate: AnyObject {
+    /// Called to allow the delegate a change to stop a tool from changing status.
+    func toolbarView(_ view: ToolbarView, shouldChangeStatusOf tool: Tool, to newStatus: ToolStatus) -> Bool
     /// Called when any tool is toggled on or off.
-    func toolbarView(_ view: ToolbarView, didChangeStatusOf tool: Tool, status: Bool)
+    func toolbarView(_ view: ToolbarView, didChangeStatusOf tool: Tool, to newStatus: ToolStatus)
+}
+
+extension ToolbarViewDelegate {
+    
+    func toolbarView(_ view: ToolbarView, shouldChangeStatusOf tool: Tool, to newStatus: ToolStatus) -> Bool { return true }
+    func toolbarView(_ view: ToolbarView, didChangeStatusOf tool: Tool, to newStatus: ToolStatus) {}
 }
 
 // MARK: - ToolbarView -
@@ -209,6 +217,9 @@ extension ToolbarView {
         guard let tool = tools.first(where: { $0.id == toolIdentifier }) else { return false }
         let toolIsActive = activeToolIdentifiers.contains(tool.id)
         
+        // Gives delegate a change to block activation.
+        guard delegate?.toolbarView(self, shouldChangeStatusOf: tool, to: .active) == true else { return false }
+        // Checks if the tool is already active.
         guard !toolIsActive else { return true }
         
         switch selectionMode {
@@ -222,7 +233,7 @@ extension ToolbarView {
         
         activeToolIdentifiers.insert(tool.id)
         update()
-        delegate?.toolbarView(self, didChangeStatusOf: tool, status: true)
+        delegate?.toolbarView(self, didChangeStatusOf: tool, to: .active)
         
         return true
     }
@@ -239,11 +250,14 @@ extension ToolbarView {
         guard let tool = tools.first(where: { $0.id == toolIdentifier }) else { return false }
         let toolIsActive = activeToolIdentifiers.contains(tool.id)
         
+        // Gives delegate a change to block activation.
+        guard delegate?.toolbarView(self, shouldChangeStatusOf: tool, to: .inactive) == true else { return false }
+        // Checks if the tool is already inactive.
         guard toolIsActive else { return true }
         
         activeToolIdentifiers.remove(toolIdentifier)
         update()
-        delegate?.toolbarView(self, didChangeStatusOf: tool, status: false)
+        delegate?.toolbarView(self, didChangeStatusOf: tool, to: .inactive)
         return true
     }
     

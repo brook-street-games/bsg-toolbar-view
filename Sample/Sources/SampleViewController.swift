@@ -42,10 +42,24 @@ final class SampleViewController: UIViewController {
         
         let tools = ["doc", "folder", "highlighter", "trash"].map { Tool(id: $0, image: UIImage(systemName: $0)) }
         toolbarView = ToolbarView(tools: tools)
+        toolbarView.delegate = self
         toolbarView.frame = horizontalFrame
         toolbarView.toolColor = .gray
         toolbarView.backgroundColor = UIColor(white: 0.2, alpha: 0.5)
         canvasView.addSubview(toolbarView)
+    }
+}
+
+// MARK: - Toolbar Delegate -
+
+extension SampleViewController: ToolbarViewDelegate {
+    
+    func toolbarView(_ view: ToolbarView, shouldChangeStatusOf tool: Tool, to newStatus: ToolStatus) -> Bool {
+        return true
+    }
+    
+    func toolbarView(_ view: ToolbarView, didChangeStatusOf tool: Tool, to newStatus: ToolStatus) {
+        debugPrint("Changed status of \(tool.id) to \(newStatus.rawValue)")
     }
 }
 

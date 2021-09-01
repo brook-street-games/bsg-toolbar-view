@@ -5,6 +5,13 @@
 
 import UIKit
 
+public enum ToolStatus: String {
+    /// The tool is currently active.
+    case active
+    /// The tool is currently inactive.
+    case inactive
+}
+
 ///
 /// Represents a single tool.
 ///
