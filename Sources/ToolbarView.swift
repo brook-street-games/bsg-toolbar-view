@@ -95,6 +95,7 @@ public final class ToolbarView: UIView {
     
     private func setup() {
     
+        clipsToBounds = true
         buttonStackView.axis = axis
         NSLayoutConstraint.deactivate(constraints)
         
@@ -134,15 +135,27 @@ public final class ToolbarView: UIView {
         
         let button = UIButton()
         button.tag = index
+        
+        // Size image to fill 60% of the button. This still looks good as the toolbar scales.
         button.setImage(tool.image?.withRenderingMode(.alwaysTemplate), for: .normal)
         button.imageView?.contentMode = .scaleAspectFit
-        // Sizes the image to match the height of system images (24). This seems to jive nicely
-        let insetAmount: CGFloat = 0//(bounds.height / 2) - 12
+        button.contentHorizontalAlignment = .fill
+        button.contentVerticalAlignment = .fill
+   
+        let insetAmount: CGFloat
+        switch axis {
+        case .horizontal: insetAmount = bounds.height * 0.2
+        case .vertical: insetAmount = bounds.width * 0.2
+        @unknown default: insetAmount = 0
+        }
         button.contentEdgeInsets = UIEdgeInsets(top: insetAmount, left: insetAmount, bottom: insetAmount, right: insetAmount)
+        
+        // Tints and colors
         button.tintColor = toolColor
         button.backgroundColor = toolBackgroundColor
         button.addTarget(self, action: #selector(toolSelected(_:)), for: .touchUpInside)
         
+        // Set up constraints
         switch (layoutMode, axis) {
         
         case (.block, _):
@@ -156,7 +169,7 @@ public final class ToolbarView: UIView {
             let buttonHeight = frame.height / CGFloat(tools.count)
             button.addConstraint(NSLayoutConstraint(item: button, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: buttonHeight))
             
-        @unknown default: fatalError()
+        @unknown default: break
         }
         
         return button
