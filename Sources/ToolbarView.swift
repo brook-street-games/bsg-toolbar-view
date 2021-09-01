@@ -14,7 +14,7 @@ public protocol ToolbarViewDelegate: AnyObject {
     func toolbarView(_ view: ToolbarView, didChangeStatusOf tool: Tool, to newStatus: ToolStatus)
 }
 
-extension ToolbarViewDelegate {
+public extension ToolbarViewDelegate {
     
     func toolbarView(_ view: ToolbarView, shouldChangeStatusOf tool: Tool, to newStatus: ToolStatus) -> Bool { return true }
     func toolbarView(_ view: ToolbarView, didChangeStatusOf tool: Tool, to newStatus: ToolStatus) {}
