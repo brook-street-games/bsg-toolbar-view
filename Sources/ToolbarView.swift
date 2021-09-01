@@ -1,6 +1,6 @@
 //
 //  ToolbarView.swift
-//  Created by JechtSh0t on 8/31/21.
+//  Created by JechtSh0t on 8/21/21.
 //
 
 import UIKit
@@ -144,7 +144,7 @@ public final class ToolbarView: UIView {
         let button = UIButton()
         button.tag = index
         
-        // Size image to fill 60% of the button. This still looks good as the toolbar scales.
+        // Size image to fill 50% of the button. This still looks good as the toolbar scales.
         button.setImage(tool.image?.withRenderingMode(.alwaysTemplate), for: .normal)
         button.imageView?.contentMode = .scaleAspectFit
         button.contentHorizontalAlignment = .fill
@@ -152,8 +152,8 @@ public final class ToolbarView: UIView {
    
         let insetAmount: CGFloat
         switch axis {
-        case .horizontal: insetAmount = bounds.height * 0.2
-        case .vertical: insetAmount = bounds.width * 0.2
+        case .horizontal: insetAmount = bounds.height * 0.25
+        case .vertical: insetAmount = bounds.width * 0.25
         @unknown default: insetAmount = 0
         }
         button.contentEdgeInsets = UIEdgeInsets(top: insetAmount, left: insetAmount, bottom: insetAmount, right: insetAmount)
