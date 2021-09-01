@@ -30,7 +30,7 @@ public final class ToolbarView: UIView {
     // MARK: - Properties -
     
     /// All tools that are displayed.
-    public var tools: [Tool] = [] { didSet { setup() }}
+    public var tools: [Tool] = [] { didSet { setup(resetTools: true) }}
     /// All tools that are currently active.
     public var activeTools: [Tool] { return tools.filter { activeToolIdentifiers.contains($0.id) }}
     /// The object that handles events triggered by the toolbar.
@@ -39,22 +39,22 @@ public final class ToolbarView: UIView {
     // MARK: - Behavior -
     
     /// Controls the layout axis. The frame must be adjusted accordingly when changing this property.
-    public var axis: NSLayoutConstraint.Axis = .horizontal { didSet { setup() }}
+    public var axis: NSLayoutConstraint.Axis = .horizontal { didSet { setup(resetTools: false) }}
     /// Controls the layout of tools within the toolbar.
-    public var layoutMode: LayoutMode = .block { didSet { setup() }}
+    public var layoutMode: LayoutMode = .block { didSet { setup(resetTools: false) }}
     /// Controls how many tools the user can activate at the same time.
-    public var selectionMode: SelectionMode = .single { didSet { setup() }}
+    public var selectionMode: SelectionMode = .single { didSet { setup(resetTools: true) }}
     
     // MARK: - Styling -
     
     /// The tint color of the tool image when inactive.
-    public var toolColor: UIColor = .label { didSet { update() }}
+    public var toolColor: UIColor = .label { didSet { updateTools() }}
     /// The tint color of the tool image when active.
-    public var activeToolColor: UIColor = .green { didSet { update() }}
+    public var activeToolColor: UIColor = .green { didSet { updateTools() }}
     /// The background color of the tool when inactive.
-    public var toolBackgroundColor: UIColor = .clear { didSet { update() }}
+    public var toolBackgroundColor: UIColor = .clear { didSet { updateTools() }}
     /// The background color of the tool when active.
-    public var activeToolBackgroundColor: UIColor = .clear { didSet { update() }}
+    public var activeToolBackgroundColor: UIColor = .clear { didSet { updateTools() }}
     
     // MARK: - Private Properties -
     
@@ -63,7 +63,7 @@ public final class ToolbarView: UIView {
     // MARK: - Override Properties -
     
     /// Forces recreation of tool buttons when changing.
-    public override var frame: CGRect { didSet { setup() }}
+    public override var frame: CGRect { didSet { setup(resetTools: false) }}
     
     // MARK: - UI -
     
@@ -90,18 +90,23 @@ public final class ToolbarView: UIView {
     public override init(frame: CGRect) {
         
         super.init(frame: frame)
-        setup()
+        setup(resetTools: true)
     }
     
     required init?(coder: NSCoder) {
         
         super.init(coder: coder)
-        setup()
+        setup(resetTools: true)
     }
     
     // MARK: - Setup -
     
-    private func setup() {
+    ///
+    /// Initial setup, or re-setup due to change to a major property.
+    ///
+    /// - parameter resetTools: If true, *activeToolsIdentifiers* will be cleared.
+    ///
+    private func setup(resetTools: Bool) {
     
         clipsToBounds = true
         buttonStackView.axis = axis
@@ -116,7 +121,9 @@ public final class ToolbarView: UIView {
         @unknown default: fatalError()
         }
         
+        if resetTools { activeToolIdentifiers.removeAll() }
         createToolButtons()
+        updateTools()
     }
     
     ///
@@ -124,7 +131,6 @@ public final class ToolbarView: UIView {
     ///
     private func createToolButtons() {
         
-        activeToolIdentifiers.removeAll()
         for button in buttonStackView.subviews { button.removeFromSuperview() }
         
         for (index, tool) in tools.enumerated() {
@@ -186,7 +192,7 @@ public final class ToolbarView: UIView {
     ///
     /// Update button colors to reflect active tools.
     ///
-    private func update() {
+    private func updateTools() {
         
         for view in buttonStackView.subviews {
             
@@ -232,7 +238,7 @@ extension ToolbarView {
         }
         
         activeToolIdentifiers.insert(tool.id)
-        update()
+        updateTools()
         delegate?.toolbarView(self, didChangeStatusOf: tool, to: .active)
         
         return true
@@ -256,7 +262,7 @@ extension ToolbarView {
         guard toolIsActive else { return true }
         
         activeToolIdentifiers.remove(toolIdentifier)
-        update()
+        updateTools()
         delegate?.toolbarView(self, didChangeStatusOf: tool, to: .inactive)
         return true
     }
