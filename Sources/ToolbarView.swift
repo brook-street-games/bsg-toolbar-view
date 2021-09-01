@@ -218,7 +218,7 @@ extension ToolbarView {
         let toolIsActive = activeToolIdentifiers.contains(tool.id)
         
         // Gives delegate a change to block activation.
-        guard delegate?.toolbarView(self, shouldChangeStatusOf: tool, to: .active) == true else { return false }
+        if let delegate = delegate, delegate.toolbarView(self, shouldChangeStatusOf: tool, to: .active) == false { return false }
         // Checks if the tool is already active.
         guard !toolIsActive else { return true }
         
@@ -251,7 +251,7 @@ extension ToolbarView {
         let toolIsActive = activeToolIdentifiers.contains(tool.id)
         
         // Gives delegate a change to block activation.
-        guard delegate?.toolbarView(self, shouldChangeStatusOf: tool, to: .inactive) == true else { return false }
+        if let delegate = delegate, delegate.toolbarView(self, shouldChangeStatusOf: tool, to: .inactive) == false { return false }
         // Checks if the tool is already inactive.
         guard toolIsActive else { return true }
         
