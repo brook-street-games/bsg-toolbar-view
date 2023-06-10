@@ -4,6 +4,8 @@
 
 A toolbar that displays an array of configurable tools. Includes horizontal and vertical axis, multiple selection, and color customization.
 
+https://github.com/brook-street-games/bsg-toolbar-view/assets/72933425/93effe88-c74f-4c90-8a3c-d0398bdbec44
+
 ## Installation
 
 ### Requirements
