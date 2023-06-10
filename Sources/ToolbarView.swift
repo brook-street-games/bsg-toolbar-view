@@ -8,6 +8,9 @@ import UIKit
 // MARK: - Delegate -
 
 public protocol ToolbarViewDelegate: AnyObject {
+	
+	/// Called to allow custom configuration for tool buttons.
+	func toolbarView(_ view: ToolbarView, didCompleteSetupFor tool: Tool, button: UIButton)
     /// Called to allow the delegate a change to stop a tool from changing status.
     func toolbarView(_ view: ToolbarView, shouldChangeStatusOf tool: Tool, to newStatus: ToolStatus) -> Bool
     /// Called when any tool is toggled on or off.
@@ -16,6 +19,7 @@ public protocol ToolbarViewDelegate: AnyObject {
 
 public extension ToolbarViewDelegate {
     
+	func toolbarView(_ view: ToolbarView, didCompleteSetupFor tool: Tool, button: UIButton) {}
     func toolbarView(_ view: ToolbarView, shouldChangeStatusOf tool: Tool, to newStatus: ToolStatus) -> Bool { return true }
     func toolbarView(_ view: ToolbarView, didChangeStatusOf tool: Tool, to newStatus: ToolStatus) {}
 }
@@ -44,6 +48,8 @@ public final class ToolbarView: UIView {
     public var layoutMode: LayoutMode = .block { didSet { setup(resetTools: false) }}
     /// Controls how many tools the user can activate at the same time.
     public var selectionMode: SelectionMode = .single { didSet { setup(resetTools: true) }}
+	/// Controls the tool selection animation.
+	public var selectionAnimation: SelectionAnimation = .bounce { didSet { setup(resetTools: false) }}
     
     // MARK: - Styling -
     
@@ -136,6 +142,7 @@ public final class ToolbarView: UIView {
         for (index, tool) in tools.enumerated() {
             let toolButton = createToolButton(for: tool, index: index)
             buttonStackView.addArrangedSubview(toolButton)
+			delegate?.toolbarView(self, didCompleteSetupFor: tool, button: toolButton)
         }
     }
     
@@ -155,6 +162,7 @@ public final class ToolbarView: UIView {
         button.imageView?.contentMode = .scaleAspectFit
         button.contentHorizontalAlignment = .fill
         button.contentVerticalAlignment = .fill
+		button.adjustsImageWhenHighlighted = false
    
         let insetAmount: CGFloat
         switch axis {
@@ -167,6 +175,12 @@ public final class ToolbarView: UIView {
         // Tints and colors
         button.tintColor = toolColor
         button.backgroundColor = toolBackgroundColor
+		
+		if selectionAnimation == .bounce {
+			button.addTarget(self, action: #selector(animateBouncePress), for: [.touchDown, .touchDragEnter])
+			button.addTarget(self, action: #selector(animateBounceRelease), for: [.touchDragExit, .touchCancel, .touchUpInside, .touchUpOutside])
+		}
+
         button.addTarget(self, action: #selector(toolSelected(_:)), for: .touchUpInside)
         
         // Set up constraints
@@ -283,7 +297,7 @@ extension ToolbarView {
     }
 }
 
-// MARK: - Nested Types - {
+// MARK: - Nested Types -
 
 public extension ToolbarView {
     
@@ -302,4 +316,11 @@ public extension ToolbarView {
         /// Multiple tools can be active at once.
         case multiple
     }
+	
+	enum SelectionAnimation {
+		/// Tools will not animate when selected.
+		case none
+		/// Tools will bounce when selected.
+		case bounce
+	}
 }
