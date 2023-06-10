@@ -27,8 +27,22 @@ final class SampleViewController: UIViewController {
     /// The area that hosts *toolbarView*
     @IBOutlet private weak var canvasView: UIView!
     
-    // MARK: - Setup -
+	@IBOutlet private weak var axisControl: UISegmentedControl!
+	@IBOutlet private weak var layoutModeControl: UISegmentedControl!
+	@IBOutlet private weak var selectionModeControl: UISegmentedControl!
+	@IBOutlet private weak var selectionAnimationControl: UISegmentedControl!
+	
+	// MARK: - Setup -
     
+	override func viewDidLoad() {
+		
+		super.viewDidLoad()
+		
+		for control in [axisControl, layoutModeControl, selectionModeControl, selectionAnimationControl] {
+			control!.setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "Lexend", size: 14)!], for: .normal)
+		}
+	}
+	
     override func viewDidAppear(_ animated: Bool) {
         
         super.viewDidAppear(animated)
@@ -62,6 +76,20 @@ extension SampleViewController: ToolbarViewDelegate {
 
 extension SampleViewController {
     
+	@IBAction private func axisChanged(_ sender: UISegmentedControl) {
+		
+		switch sender.selectedSegmentIndex {
+		case 0:
+			toolbarView.axis = .horizontal
+			toolbarView.frame = horizontalFrame
+		case 1:
+			toolbarView.axis = .vertical
+			toolbarView.frame = verticalFrame
+			
+		default: break
+		}
+	}
+	
     @IBAction private func layoutModeChanged(_ sender: UISegmentedControl) {
         
         switch sender.selectedSegmentIndex {
@@ -81,17 +109,12 @@ extension SampleViewController {
         }
     }
     
-    @IBAction private func axisChanged(_ sender: UISegmentedControl) {
-        
-        switch sender.selectedSegmentIndex {
-        case 0:
-            toolbarView.axis = .horizontal
-            toolbarView.frame = horizontalFrame
-        case 1:
-            toolbarView.axis = .vertical
-            toolbarView.frame = verticalFrame
-            
-        default: break
-        }
-    }
+	@IBAction private func selectionAnimationChanged(_ sender: UISegmentedControl) {
+		
+		switch sender.selectedSegmentIndex {
+		case 0: toolbarView.selectionAnimation = .bounce
+		case 1: toolbarView.selectionAnimation = .none
+		default: break
+		}
+	}
 }

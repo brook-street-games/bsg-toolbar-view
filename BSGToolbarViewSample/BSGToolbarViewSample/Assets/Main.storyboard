@@ -1,23 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22113.1" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22089"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Lexend.ttf">
+            <string>Lexend-Regular</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Sample View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="SampleViewController" customModule="Sample" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="SampleViewController" customModule="BSGToolbarViewSample" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="4cD-Mt-0WO">
-                                <rect key="frame" x="20" y="223" width="374" height="450"/>
+                                <rect key="frame" x="20" y="156" width="374" height="584"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eUJ-gG-JKV" userLabel="canvasView">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="240"/>
@@ -27,22 +33,22 @@
                                         </constraints>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="9tt-yd-qXj">
-                                        <rect key="frame" x="0.0" y="290" width="374" height="160"/>
+                                        <rect key="frame" x="0.0" y="290" width="374" height="294"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="lIk-Su-GiM">
-                                                <rect key="frame" x="0.0" y="0.0" width="374" height="40"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="lIk-Su-GiM">
+                                                <rect key="frame" x="0.0" y="0.0" width="374" height="58.5"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="axis" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YAz-Xy-zYD">
-                                                        <rect key="frame" x="0.0" y="0.0" width="113.5" height="40"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Axis" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YAz-Xy-zYD" userLabel="label">
+                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="17.5"/>
+                                                        <fontDescription key="fontDescription" name="Lexend-Regular" family="Lexend" pointSize="14"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="FB2-CJ-KTW">
-                                                        <rect key="frame" x="123.5" y="0.0" width="250.5" height="41"/>
+                                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="FB2-CJ-KTW" userLabel="segementedControl">
+                                                        <rect key="frame" x="0.0" y="27.5" width="374" height="32"/>
                                                         <segments>
-                                                            <segment title="horizontal"/>
-                                                            <segment title="vertical"/>
+                                                            <segment title="Horizontal"/>
+                                                            <segment title="Vertical"/>
                                                         </segments>
                                                         <connections>
                                                             <action selector="axisChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="O3n-kN-IQR"/>
@@ -50,62 +56,80 @@
                                                     </segmentedControl>
                                                 </subviews>
                                                 <constraints>
-                                                    <constraint firstItem="FB2-CJ-KTW" firstAttribute="width" secondItem="lIk-Su-GiM" secondAttribute="width" multiplier="0.67" id="Bpd-VU-bgJ"/>
+                                                    <constraint firstAttribute="height" constant="60" id="0eY-au-K8Q"/>
                                                 </constraints>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="9Rf-Se-lNJ">
-                                                <rect key="frame" x="0.0" y="60" width="374" height="40"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="9Rf-Se-lNJ">
+                                                <rect key="frame" x="0.0" y="78.5" width="374" height="58.5"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="layoutMode" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pqe-eH-IFn">
-                                                        <rect key="frame" x="0.0" y="0.0" width="113.5" height="40"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Layout Mode" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pqe-eH-IFn" userLabel="label">
+                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="17.5"/>
+                                                        <fontDescription key="fontDescription" name="Lexend-Regular" family="Lexend" pointSize="14"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="sm9-9D-78V">
-                                                        <rect key="frame" x="123.5" y="0.0" width="250.5" height="41"/>
+                                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="sm9-9D-78V" userLabel="segmentedControl">
+                                                        <rect key="frame" x="0.0" y="27.5" width="374" height="32"/>
                                                         <segments>
-                                                            <segment title="block"/>
-                                                            <segment title="fill"/>
+                                                            <segment title="Block"/>
+                                                            <segment title="Fill"/>
                                                         </segments>
                                                         <connections>
                                                             <action selector="layoutModeChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="9iI-Sm-6ln"/>
                                                         </connections>
                                                     </segmentedControl>
                                                 </subviews>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="40" id="k4G-Tv-hEb"/>
-                                                    <constraint firstItem="sm9-9D-78V" firstAttribute="width" secondItem="9Rf-Se-lNJ" secondAttribute="width" multiplier="0.67" id="xc1-BY-skl"/>
-                                                </constraints>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Afg-FD-2Bj">
-                                                <rect key="frame" x="0.0" y="120" width="374" height="40"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Afg-FD-2Bj">
+                                                <rect key="frame" x="0.0" y="157" width="374" height="58.5"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="selectionMode" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KBX-qD-MUe">
-                                                        <rect key="frame" x="0.0" y="0.0" width="113.5" height="40"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Selection Mode" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KBX-qD-MUe" userLabel="label">
+                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="17.5"/>
+                                                        <fontDescription key="fontDescription" name="Lexend-Regular" family="Lexend" pointSize="14"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <segmentedControl opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="7Kf-Z6-2EV">
-                                                        <rect key="frame" x="123.5" y="0.0" width="250.5" height="41"/>
+                                                    <segmentedControl opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="7Kf-Z6-2EV" userLabel="segmentedControl">
+                                                        <rect key="frame" x="0.0" y="27.5" width="374" height="32"/>
                                                         <segments>
-                                                            <segment title="single"/>
-                                                            <segment title="singleLock"/>
-                                                            <segment title="multiple"/>
+                                                            <segment title="Single"/>
+                                                            <segment title="Single Lock"/>
+                                                            <segment title="Multiple"/>
                                                         </segments>
                                                         <connections>
                                                             <action selector="selectionModeChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="slV-kH-KFt"/>
                                                         </connections>
                                                     </segmentedControl>
                                                 </subviews>
-                                                <constraints>
-                                                    <constraint firstItem="7Kf-Z6-2EV" firstAttribute="width" secondItem="Afg-FD-2Bj" secondAttribute="width" multiplier="0.67" id="w39-AH-XFg"/>
-                                                </constraints>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" id="20I-L3-ce1">
+                                                <rect key="frame" x="0.0" y="235.5" width="374" height="58.5"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Selection Animation" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2HH-wp-JsZ" userLabel="label">
+                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="17.5"/>
+                                                        <fontDescription key="fontDescription" name="Lexend-Regular" family="Lexend" pointSize="14"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <segmentedControl opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="5qe-aj-Q59" userLabel="segmentedControl">
+                                                        <rect key="frame" x="0.0" y="27.5" width="374" height="32"/>
+                                                        <segments>
+                                                            <segment title="Bounce"/>
+                                                            <segment title="None"/>
+                                                        </segments>
+                                                        <connections>
+                                                            <action selector="selectionAnimationChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="CYM-0b-zVq"/>
+                                                        </connections>
+                                                    </segmentedControl>
+                                                </subviews>
+                                                <viewLayoutGuide key="safeArea" id="bEK-m0-vhD"/>
                                             </stackView>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstItem="Afg-FD-2Bj" firstAttribute="height" secondItem="9Rf-Se-lNJ" secondAttribute="height" id="gym-MC-H5S"/>
+                                            <constraint firstItem="9Rf-Se-lNJ" firstAttribute="height" secondItem="lIk-Su-GiM" secondAttribute="height" id="k5o-HI-0cU"/>
+                                            <constraint firstItem="20I-L3-ce1" firstAttribute="height" secondItem="lIk-Su-GiM" secondAttribute="height" id="qXf-Lx-8to"/>
+                                            <constraint firstItem="Afg-FD-2Bj" firstAttribute="height" secondItem="lIk-Su-GiM" secondAttribute="height" id="rkL-J9-rXL"/>
                                         </constraints>
                                     </stackView>
                                 </subviews>
@@ -115,12 +139,17 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="4cD-Mt-0WO" secondAttribute="trailing" constant="20" id="Vp6-Dk-BHc"/>
+                            <constraint firstItem="4cD-Mt-0WO" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="eCp-HW-Yul"/>
                             <constraint firstItem="4cD-Mt-0WO" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="iPA-kR-dRM"/>
                             <constraint firstItem="4cD-Mt-0WO" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="v8U-he-Baf"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="axisControl" destination="FB2-CJ-KTW" id="sHt-LA-KS7"/>
                         <outlet property="canvasView" destination="eUJ-gG-JKV" id="MhY-ug-7dS"/>
+                        <outlet property="layoutModeControl" destination="sm9-9D-78V" id="tC0-5z-Gi9"/>
+                        <outlet property="selectionAnimationControl" destination="5qe-aj-Q59" id="jpC-ge-jJ6"/>
+                        <outlet property="selectionModeControl" destination="7Kf-Z6-2EV" id="5Hq-zf-HW4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
