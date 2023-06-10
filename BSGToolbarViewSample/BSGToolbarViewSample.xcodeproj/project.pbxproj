@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4A30768F2A352B5200A0FEE0 /* Lexend.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4A30768E2A352B5200A0FEE0 /* Lexend.ttf */; };
 		4A643D6F2A3521B600D62D9F /* SampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A643D662A3521B600D62D9F /* SampleViewController.swift */; };
 		4A643D702A3521B600D62D9F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A643D672A3521B600D62D9F /* AppDelegate.swift */; };
 		4A643D712A3521B600D62D9F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A643D682A3521B600D62D9F /* SceneDelegate.swift */; };
@@ -32,6 +33,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4A30768E2A352B5200A0FEE0 /* Lexend.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Lexend.ttf; sourceTree = "<group>"; };
 		4A643D662A3521B600D62D9F /* SampleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleViewController.swift; sourceTree = "<group>"; };
 		4A643D672A3521B600D62D9F /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4A643D682A3521B600D62D9F /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -77,6 +79,7 @@
 		4A643D692A3521B600D62D9F /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				4A30768E2A352B5200A0FEE0 /* Lexend.ttf */,
 				4A643D6A2A3521B600D62D9F /* Assets.xcassets */,
 				4A643D6B2A3521B600D62D9F /* LaunchScreen.storyboard */,
 				4A643D6D2A3521B600D62D9F /* Main.storyboard */,
@@ -171,6 +174,7 @@
 			files = (
 				4A643D742A3521B600D62D9F /* Main.storyboard in Resources */,
 				4A643D722A3521B600D62D9F /* Assets.xcassets in Resources */,
+				4A30768F2A352B5200A0FEE0 /* Lexend.ttf in Resources */,
 				4A643D732A3521B600D62D9F /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

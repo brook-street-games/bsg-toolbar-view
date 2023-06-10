@@ -1,48 +1,72 @@
 # BSGToolbarView
 
-## Description
-BSGToolbarView is a configurable toolbar that displays an array of tool passed in by the user. It can be configured horizontally or vertically.
+## Overview
 
-## Requirements
-
-+ iOS 13+
+A toolbar that displays an array of configurable tools. Includes horizontal and vertical axis, multiple selection, and color customization.
 
 ## Installation
 
-### Swift Package Manager
+### Requirements
 
-1. File->Swift Packages->Add Package Dependency
-2. Select project
-3. Add project URL (https://github.com/brook-street-games/bsg-toolbar-view.git) and click Next
-4. Select (Version, Up to Next Major, 1.0) and click Next
++ iOS 13+
 
-## Example
+#### Swift Package Manager
+
+1. Navigate to ***File->Add Packages***.
+3. Enter Package URL: https://github.com/brook-street-games/bsg-toolbar-view.git
+3. Select a dependency rule. **Up to Next Major** is recommended.
+4. Select a project.
+5. Select **Add Package**.
+
+## Usage
 
 ```swift
-// Creation
-let tools = ["doc", "folder", "highlighter", "trash"].map { Tool(id: $0, image: UIImage(systemName: $0)) }
+// Import the framework.
+import BSGToolbarView
+
+// Create tools. Each tool requires an id and image.
+let tools: [Tool] = []
+
+// Create a toolbar.
 toolbarView = ToolbarView(tools: tools)
 toolbarView.delegate = self
 
-// Behavior
-toolbarView.axis = .horizontal
-toolbarView.layoutMode = .fill
-toolbarView.selectionMode = .single
-
-// Styling
-toolbarView.backgroundColor = .black
-toolbarView.toolColor = .lightGray
-toolbarView.activeToolColor = .red
-toolbarView.frame = CGRect(x: 0, y: 0, width: canvasView.bounds.width, height: 50)
-
+// Add the toolbar to the view hierarchy.
 view.addSubview(toolbarView)
+
+// Receive updates when tools change status.
+func toolbarView(_ view: ToolbarView, didChangeStatusOf tool: Tool, to newStatus: ToolStatus) {
+	// Handle status change.
+}
 ```
 
-![BSGToolbarView](../main/Example/example.png)
+## Customization
 
-## Sample Project
+#### Style
 
-A sample project is included in the repository. Select the BSGToolbarViewSample target in Xcode to run it.
+```swift
+// Change the tint color of inactive tools.
+toolbarView.toolColor = .black
+// Change the tint color of active tools.
+toolbarView.activeToolColor = .red
+// Change the background color of inactive tools.
+toolbarView.toolBackgroundColor = .gray
+// Change the background color of active tools.
+toolbarView.activeToolBackgroundColor = .black
+```
+
+#### Behavior
+
+```swift
+// Change the axis.
+toolbarView.axis = .vertical
+// Change the layout mode.
+toolbarView.layoutMode = .fill
+// Change the selection mode.
+toolbarView.selectionMode = .multiple
+// Change the selection animation.
+toolbarView.selectionAnimation = .none
+```
 
 ## Author
 

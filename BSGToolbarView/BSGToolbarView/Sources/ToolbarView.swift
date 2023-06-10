@@ -58,7 +58,7 @@ public final class ToolbarView: UIView {
     /// The tint color of the tool image when inactive.
     public var toolColor: UIColor = .label { didSet { updateTools() }}
     /// The tint color of the tool image when active.
-    public var activeToolColor: UIColor = .green { didSet { updateTools() }}
+    public var activeToolColor: UIColor = .systemBlue { didSet { updateTools() }}
     /// The background color of the tool when inactive.
     public var toolBackgroundColor: UIColor = .clear { didSet { updateTools() }}
     /// The background color of the tool when active.
