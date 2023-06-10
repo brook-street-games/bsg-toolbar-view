@@ -1,6 +1,8 @@
 //
 //  UIView+Extensions.swift
+//
 //  Created by JechtSh0t on 6/10/23.
+//  Copyright © 2023 Brook Street Games. All rights reserved.
 //
 
 import UIKit

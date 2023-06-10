@@ -1,8 +1,8 @@
 //
 //  SampleViewController.swift
-//  Sample
 //
 //  Created by JechtSh0t on 8/21/21.
+//  Copyright © 2021 Brook Street Games. All rights reserved.
 //
 
 import UIKit

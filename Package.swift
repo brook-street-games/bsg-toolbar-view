@@ -1,4 +1,4 @@
-// swift-tools-version:5.3
+// swift-tools-version:5.8
 
 import PackageDescription
 
@@ -18,14 +18,12 @@ let package = Package(
         .target(
             name: "BSGToolbarView",
             dependencies: [],
-            path: "Sources",
-            exclude: ["Info.plist"]
+			path: "BSGToolbarView/BSGToolbarView/Sources"
         ),
         .testTarget(
             name: "BSGToolbarViewTests",
             dependencies: ["BSGToolbarView"],
-            path: "Tests",
-            exclude: ["Info.plist"]
+			path: "BSGToolbarView/BSGToolbarViewTests/Sources"
         ),
     ]
 )
