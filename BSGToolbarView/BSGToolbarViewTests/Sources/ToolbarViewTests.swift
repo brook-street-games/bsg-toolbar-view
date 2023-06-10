@@ -2,7 +2,9 @@
 //  ToolbarViewTests.swift
 //
 //  Created by JechtSh0t on 8/21/21.
+//  Copyright © 2021 Brook Street Games. All rights reserved.
 //
+
 import XCTest
 @testable import BSGToolbarView
 
@@ -18,6 +20,7 @@ final class ToolbarViewTests: XCTestCase {
 }
 
 // MARK: - Initializers -
+
 extension ToolbarViewTests {
     
     ///
@@ -49,6 +52,7 @@ extension ToolbarViewTests {
 }
 
 // MARK: - Activation -
+
 extension ToolbarViewTests {
     
     ///
@@ -73,6 +77,7 @@ extension ToolbarViewTests {
 }
 
 // MARK: - Selection Mode -
+
 extension ToolbarViewTests {
     
     ///
