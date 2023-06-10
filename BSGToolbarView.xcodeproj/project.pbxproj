@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4A643D4B2A3519EA00D62D9F /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A643D4A2A3519EA00D62D9F /* UIView+Extensions.swift */; };
 		7A5459E726D1C12F009578CC /* Tool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A5459E526D1C12F009578CC /* Tool.swift */; };
 		7A5459E826D1C12F009578CC /* ToolbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A5459E626D1C12F009578CC /* ToolbarView.swift */; };
 		7A7F09BE26D1C919006206A3 /* ToolbarViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7F09BD26D1C919006206A3 /* ToolbarViewTests.swift */; };
@@ -24,6 +25,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4A643D4A2A3519EA00D62D9F /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		7A5459C926D1C0F4009578CC /* BSGToolbarView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BSGToolbarView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A5459E526D1C12F009578CC /* Tool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tool.swift; sourceTree = "<group>"; };
 		7A5459E626D1C12F009578CC /* ToolbarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolbarView.swift; sourceTree = "<group>"; };
@@ -76,6 +78,7 @@
 				7A7F09B526D1C899006206A3 /* Info.plist */,
 				7A5459E526D1C12F009578CC /* Tool.swift */,
 				7A5459E626D1C12F009578CC /* ToolbarView.swift */,
+				4A643D4A2A3519EA00D62D9F /* UIView+Extensions.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -197,6 +200,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A643D4B2A3519EA00D62D9F /* UIView+Extensions.swift in Sources */,
 				7A5459E826D1C12F009578CC /* ToolbarView.swift in Sources */,
 				7A5459E726D1C12F009578CC /* Tool.swift in Sources */,
 			);
