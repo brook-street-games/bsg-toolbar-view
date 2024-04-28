@@ -17,7 +17,7 @@ public enum ToolStatus: String {
 ///
 /// Represents a single tool.
 ///
-public struct Tool {
+public struct Tool: Equatable {
     
     public var id: String
     public var image: UIImage?
