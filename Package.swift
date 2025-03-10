@@ -18,12 +18,12 @@ let package = Package(
         .target(
             name: "BSGToolbarView",
             dependencies: [],
-			path: "BSGToolbarView/BSGToolbarView/Sources"
+			path: "BSGToolbarView"
         ),
         .testTarget(
             name: "BSGToolbarViewTests",
             dependencies: ["BSGToolbarView"],
-			path: "BSGToolbarView/BSGToolbarViewTests/Sources"
+			path: "BSGToolbarViewTests"
         ),
     ]
 )

@@ -2,9 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:BSGToolbarView/BSGToolbarView.xcodeproj">
+      location = "group:BSGToolbarView.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:BSGToolbarViewSample/BSGToolbarViewSample.xcodeproj">
+      location = "group:BSGToolbarViewSample.xcodeproj">
    </FileRef>
 </Workspace>
