@@ -20,7 +20,6 @@ extension UIView {
 	}
 	
 	private func animate(_ sender: UIView, transform: CGAffineTransform) {
-		
 		UIView.animate(withDuration: 0.1, delay: 0, options: [.curveEaseInOut], animations: {
 			sender.transform = transform
 		})

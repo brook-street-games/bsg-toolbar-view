@@ -33,8 +33,35 @@ public extension ToolbarViewDelegate {
 ///
 public final class ToolbarView: UIView {
     
+    // MARK: - Nested Types -
+    
+    public enum LayoutMode {
+        /// Tools will only take up the room they need.
+        case block
+        /// Tools will expand to fill the toolbar.
+        case fill
+    }
+    
+    public enum SelectionAnimation {
+        /// Tools will not animate when selected.
+        case none
+        /// Tools will bounce when selected.
+        case bounce
+    }
+    
+    public enum SelectionMode {
+        /// Only one tool can be active at a time.
+        case single
+        /// Only one tool can be active at a time. The tool must be deactivated before another can be activated.
+        case singleLock
+        /// Multiple tools can be active at once.
+        case multiple
+    }
+    
     // MARK: - Properties -
     
+    /// A unique identifier.
+    public let id = UUID()
     /// All tools that are displayed.
     public var tools: [Tool] = [] { didSet { setup(resetTools: true) }}
     /// All tools that are currently active.
@@ -76,7 +103,6 @@ public final class ToolbarView: UIView {
     // MARK: - UI -
     
     private lazy var buttonStackView: UIStackView = {
-        
         let stackView = UIStackView()
         stackView.distribution = .fillEqually
         stackView.alignment = .fill
@@ -89,20 +115,17 @@ public final class ToolbarView: UIView {
     // MARK: - Initializers -
     
     public init(tools: [Tool]) {
-        
         // Triggers setup
         self.tools = tools
         super.init(frame: CGRect.zero)
     }
     
     public override init(frame: CGRect) {
-        
         super.init(frame: frame)
         setup(resetTools: true)
     }
     
     required init?(coder: NSCoder) {
-        
         super.init(coder: coder)
         setup(resetTools: true)
     }
@@ -115,7 +138,6 @@ public final class ToolbarView: UIView {
     /// - parameter resetTools: If true, *activeToolsIdentifiers* will be cleared.
     ///
     private func setup(resetTools: Bool) {
-    
         clipsToBounds = true
         buttonStackView.axis = axis
         NSLayoutConstraint.deactivate(constraints)
@@ -138,7 +160,6 @@ public final class ToolbarView: UIView {
     /// Empties and refills toolbar with buttons.
     ///
     private func createToolButtons() {
-        
         for button in buttonStackView.subviews { button.removeFromSuperview() }
         
         for (index, tool) in tools.enumerated() {
@@ -155,7 +176,6 @@ public final class ToolbarView: UIView {
     /// - parameter index: The array index of the tool for identification purposes.
     ///
     private func createToolButton(for tool: Tool, index: Int) -> UIButton {
-        
         let button = UIButton()
         button.tag = index
         
@@ -209,12 +229,9 @@ public final class ToolbarView: UIView {
     /// Update button colors to reflect active tools.
     ///
     private func updateTools() {
-        
         for view in buttonStackView.subviews {
-            
             guard let button = view as? UIButton else { continue }
             let isActive = activeToolIdentifiers.contains(tools[button.tag].id)
-            
             button.isSelected = isActive
             button.tintColor = isActive ? activeToolColor : toolColor
             button.backgroundColor = isActive ? activeToolBackgroundColor : toolBackgroundColor
@@ -235,7 +252,6 @@ extension ToolbarView {
     ///
     @discardableResult
     public func activateTool(withIdentifier toolIdentifier: String) -> Bool {
-        
         guard let tool = tools.first(where: { $0.id == toolIdentifier }) else { return false }
         let toolIsActive = activeToolIdentifiers.contains(tool.id)
         
@@ -268,7 +284,6 @@ extension ToolbarView {
     ///
     @discardableResult
     public func deactivateTool(withIdentifier toolIdentifier: String) -> Bool {
-        
         guard let tool = tools.first(where: { $0.id == toolIdentifier }) else { return false }
         let toolIsActive = activeToolIdentifiers.contains(tool.id)
         
@@ -287,7 +302,6 @@ extension ToolbarView {
     /// Called when a tool button is pressed.
     ///
     @objc private func toolSelected(_ sender: UIButton) {
-        
         let tool = tools[sender.tag]
         let toolIsActive = activeToolIdentifiers.contains(tool.id)
         
@@ -297,32 +311,4 @@ extension ToolbarView {
             activateTool(withIdentifier: tool.id)
         }
     }
-}
-
-// MARK: - Nested Types -
-
-public extension ToolbarView {
-    
-    enum LayoutMode {
-        /// Tools will only take up the room they need.
-        case block
-        /// Tools will expand to fill the toolbar.
-        case fill
-    }
-    
-    enum SelectionMode {
-        /// Only one tool can be active at a time.
-        case single
-        /// Only one tool can be active at a time. The tool must be deactivated before another can be activated.
-        case singleLock
-        /// Multiple tools can be active at once.
-        case multiple
-    }
-	
-	enum SelectionAnimation {
-		/// Tools will not animate when selected.
-		case none
-		/// Tools will bounce when selected.
-		case bounce
-	}
 }

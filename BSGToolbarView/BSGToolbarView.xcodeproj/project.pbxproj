@@ -3,14 +3,10 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 54;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4A643D532A35212D00D62D9F /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A643D4E2A35212D00D62D9F /* UIView+Extensions.swift */; };
-		4A643D542A35212D00D62D9F /* Tool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A643D4F2A35212D00D62D9F /* Tool.swift */; };
-		4A643D552A35212D00D62D9F /* ToolbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A643D502A35212D00D62D9F /* ToolbarView.swift */; };
-		4A643D5C2A35213700D62D9F /* ToolbarViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A643D592A35213700D62D9F /* ToolbarViewTests.swift */; };
 		7A7F09C026D1C919006206A3 /* BSGToolbarView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A5459C926D1C0F4009578CC /* BSGToolbarView.framework */; };
 /* End PBXBuildFile section */
 
@@ -25,13 +21,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		4A643D4E2A35212D00D62D9F /* UIView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
-		4A643D4F2A35212D00D62D9F /* Tool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tool.swift; sourceTree = "<group>"; };
-		4A643D502A35212D00D62D9F /* ToolbarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolbarView.swift; sourceTree = "<group>"; };
-		4A643D592A35213700D62D9F /* ToolbarViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolbarViewTests.swift; sourceTree = "<group>"; };
 		7A5459C926D1C0F4009578CC /* BSGToolbarView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BSGToolbarView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A7F09BB26D1C919006206A3 /* BSGToolbarViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BSGToolbarViewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		4A9690B62D7E9C9D0082AC7F /* BSGToolbarView */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = BSGToolbarView; sourceTree = "<group>"; };
+		4A9690BC2D7E9CA10082AC7F /* BSGToolbarViewTests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = BSGToolbarViewTests; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		7A5459C626D1C0F4009578CC /* Frameworks */ = {
@@ -52,45 +49,11 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		4A643D4C2A35212D00D62D9F /* BSGToolbarView */ = {
-			isa = PBXGroup;
-			children = (
-				4A643D4D2A35212D00D62D9F /* Sources */,
-			);
-			path = BSGToolbarView;
-			sourceTree = "<group>";
-		};
-		4A643D4D2A35212D00D62D9F /* Sources */ = {
-			isa = PBXGroup;
-			children = (
-				4A643D4E2A35212D00D62D9F /* UIView+Extensions.swift */,
-				4A643D4F2A35212D00D62D9F /* Tool.swift */,
-				4A643D502A35212D00D62D9F /* ToolbarView.swift */,
-			);
-			path = Sources;
-			sourceTree = "<group>";
-		};
-		4A643D572A35213700D62D9F /* BSGToolbarViewTests */ = {
-			isa = PBXGroup;
-			children = (
-				4A643D582A35213700D62D9F /* Sources */,
-			);
-			path = BSGToolbarViewTests;
-			sourceTree = "<group>";
-		};
-		4A643D582A35213700D62D9F /* Sources */ = {
-			isa = PBXGroup;
-			children = (
-				4A643D592A35213700D62D9F /* ToolbarViewTests.swift */,
-			);
-			path = Sources;
-			sourceTree = "<group>";
-		};
 		7A5459BF26D1C0F4009578CC = {
 			isa = PBXGroup;
 			children = (
-				4A643D4C2A35212D00D62D9F /* BSGToolbarView */,
-				4A643D572A35213700D62D9F /* BSGToolbarViewTests */,
+				4A9690B62D7E9C9D0082AC7F /* BSGToolbarView */,
+				4A9690BC2D7E9CA10082AC7F /* BSGToolbarViewTests */,
 				7A5459CA26D1C0F4009578CC /* Products */,
 			);
 			sourceTree = "<group>";
@@ -130,6 +93,9 @@
 			);
 			dependencies = (
 			);
+			fileSystemSynchronizedGroups = (
+				4A9690B62D7E9C9D0082AC7F /* BSGToolbarView */,
+			);
 			name = BSGToolbarView;
 			productName = BSGToolbarView;
 			productReference = 7A5459C926D1C0F4009578CC /* BSGToolbarView.framework */;
@@ -148,6 +114,9 @@
 			dependencies = (
 				7A7F09C226D1C919006206A3 /* PBXTargetDependency */,
 			);
+			fileSystemSynchronizedGroups = (
+				4A9690BC2D7E9CA10082AC7F /* BSGToolbarViewTests */,
+			);
 			name = BSGToolbarViewTests;
 			productName = Tests;
 			productReference = 7A7F09BB26D1C919006206A3 /* BSGToolbarViewTests.xctest */;
@@ -161,7 +130,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 1250;
-				LastUpgradeCheck = 1500;
+				LastUpgradeCheck = 1620;
 				TargetAttributes = {
 					7A5459C826D1C0F4009578CC = {
 						CreatedOnToolsVersion = 12.5;
@@ -213,9 +182,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4A643D532A35212D00D62D9F /* UIView+Extensions.swift in Sources */,
-				4A643D542A35212D00D62D9F /* Tool.swift in Sources */,
-				4A643D552A35212D00D62D9F /* ToolbarView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -223,7 +189,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4A643D5C2A35213700D62D9F /* ToolbarViewTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -388,7 +353,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -418,7 +383,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.brookstreetgames.bsgtoolbarview;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -426,7 +391,6 @@
 		7A7F09C426D1C919006206A3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = K9C8XCSNZZ;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -438,7 +402,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = net.brookstreetgames.Tests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -446,7 +410,6 @@
 		7A7F09C526D1C919006206A3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = K9C8XCSNZZ;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -458,7 +421,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = net.brookstreetgames.Tests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
