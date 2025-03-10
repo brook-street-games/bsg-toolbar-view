@@ -9,6 +9,7 @@ import UIKit
 
 // MARK: - Delegate -
 
+@MainActor
 public protocol ToolbarViewDelegate: AnyObject {
 	
 	/// Called to allow custom configuration for tool buttons.
@@ -31,6 +32,7 @@ public extension ToolbarViewDelegate {
 ///
 /// A view that displays tools that can be toggled on or off.
 ///
+@MainActor
 public final class ToolbarView: UIView {
     
     // MARK: - Nested Types -
